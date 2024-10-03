@@ -7,9 +7,11 @@ struct FnTable {
 };
 
 int exchange(int, char**);
+int my_pread(int, char**);
 
 const struct FnTable cmds[] = {
 	{"exchange", &exchange},
+	{"pread", &my_pread},
 };
 
 int main(int argc, char** argv) {
