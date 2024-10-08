@@ -17,7 +17,7 @@ const struct FnTable cmds[] = {
 };
 
 int main(int argc, char** argv) {
-	ASSERT(argc >= 2, "No subcommand specified");
+	ASSERT(argc >= 2, "No subcommand specified\n");
 
 	for (size_t i = 0; i < (sizeof(cmds) / sizeof(*cmds)); i++) {
 		if (strcmp(argv[1], cmds[i].name) == 0) {

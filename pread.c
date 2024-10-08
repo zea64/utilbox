@@ -6,9 +6,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static const char USAGE[] = "\
-USAGE: pread <PATH> <OFFSET> <SIZE>\n\
-";
+static const char USAGE[] = "USAGE: pread <PATH> <OFFSET> <SIZE>\n";
 
 int my_pread(int argc, char** argv) {
 	ASSERT(argc == 3, USAGE);
