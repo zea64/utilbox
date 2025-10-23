@@ -27,6 +27,9 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	fputs("Invalid subcommand\n", stderr);
+	fputs("Invalid subcommand\nAvailable subcommands:\n", stderr);
+	for (size_t i = 0; i < (sizeof(cmds) / sizeof(*cmds)); i++) {
+		fprintf(stderr, "\t%s\n", cmds[i].name);
+	}
 	return EXIT_FAILURE;
 }
