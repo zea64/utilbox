@@ -6,11 +6,13 @@ struct FnTable {
 	int (*fn)(int, char**);
 };
 
+int core_sched(int, char**);
 int exchange(int, char**);
 int my_pread(int, char**);
 int prep_fd(int, char**);
 
 const struct FnTable cmds[] = {
+	{"core_sched", &core_sched},
 	{"exchange", &exchange},
 	{"pread", &my_pread},
 	{"prep_fd", &prep_fd},
