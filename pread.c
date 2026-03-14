@@ -8,12 +8,12 @@
 
 static const char USAGE[] = "USAGE: pread <PATH> <OFFSET> <SIZE>\n";
 
-int my_pread(int argc, char** argv) {
+int my_pread(int argc, char **argv) {
 	ASSERT(argc == 3, EX_USAGE, USAGE);
 
 	errno = 0;
 
-	char* endptr;
+	char *endptr;
 	unsigned long long offset = strtoull(argv[1], &endptr, 10);
 	ASSERT(*endptr == '\0' && errno == 0, EX_USAGE, "Invalid offset\n");
 
@@ -38,8 +38,7 @@ int my_pread(int argc, char** argv) {
 
 		size_t total_written = 0;
 		do {
-			ssize_t write_size =
-				write(1, buf + total_written, size - total_written);
+			ssize_t write_size = write(1, buf + total_written, size - total_written);
 			ASSERT(write_size != -1, EX_IOERR, "write: %s\n", strerror(errno));
 			total_written += write_size;
 		} while (total_written != read_chunk);

@@ -2,13 +2,13 @@
 #include <stdlib.h>
 
 struct FnTable {
-	const char* name;
-	int (*fn)(int, char**);
+	const char *name;
+	int (*fn)(int, char **);
 };
 
-int core_sched(int, char**);
-int my_pread(int, char**);
-int prep_fd(int, char**);
+int core_sched(int, char **);
+int my_pread(int, char **);
+int prep_fd(int, char **);
 
 static const struct FnTable top_cmds[] = {
 	{"core_sched", &core_sched},
@@ -19,7 +19,7 @@ static const struct FnTable top_cmds[] = {
 constexpr size_t top_cmds_len = sizeof(top_cmds) / sizeof(*top_cmds);
 
 // Returns -1 if command is not found.
-int do_cmd(size_t cmds_len, const struct FnTable cmds[static cmds_len], int argc, char** argv) {
+int do_cmd(size_t cmds_len, const struct FnTable cmds[static cmds_len], int argc, char **argv) {
 	for (size_t i = 0; i < cmds_len; i++)
 		if (strcmp(argv[0], cmds[i].name) == 0)
 			return cmds[i].fn(argc - 1, argv + 1);
@@ -34,7 +34,7 @@ int do_cmd(size_t cmds_len, const struct FnTable cmds[static cmds_len], int argc
 	}
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
 	if (argc == 0)
 		goto err;
 
