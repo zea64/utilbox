@@ -1,6 +1,6 @@
 .PHONY: all clean
-CC := gcc
-CFLAGS := -O2 -Wall -Wextra
+CC := clang
+CFLAGS := -std=c23 -g -Os -Wall -Wextra
 
 all: utilbox
 

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sysexits.h>
 
 #define ASSERT(cond, ...) \
 	if (!(cond)) { \
