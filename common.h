@@ -6,8 +6,8 @@
 #include <string.h>
 #include <sysexits.h>
 
-#define ASSERT(cond, ...) \
+#define ASSERT(cond, status, ...) \
 	if (!(cond)) { \
 		fprintf(stderr, __VA_ARGS__); \
-		exit(EXIT_FAILURE); \
+		exit((status)); \
 	}
