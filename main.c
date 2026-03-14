@@ -1,11 +1,6 @@
 #include "common.h"
 #include <stdlib.h>
 
-struct FnTable {
-	const char *name;
-	int (*fn)(int, char **);
-};
-
 int core_sched(int, char **);
 int my_pread(int, char **);
 int prep_fd(int, char **);
@@ -32,6 +27,15 @@ int do_cmd(size_t cmds_len, const struct FnTable cmds[static cmds_len], int argc
 	for (size_t i = 0; i < cmds_len; i++) {
 		fprintf(stderr, "\t%s\n", cmds[i].name);
 	}
+}
+
+int do_cmd_full(size_t cmds_len, const struct FnTable cmds[static cmds_len], int argc, char **argv, const char name[static 1]) {
+	int ret = do_cmd(cmds_len, cmds, argc, argv);
+	if (ret == -1) {
+		print_cmds(cmds_len, cmds, name);
+		return EX_USAGE;
+	}
+	return EX_OK;
 }
 
 int main(int argc, char **argv) {
